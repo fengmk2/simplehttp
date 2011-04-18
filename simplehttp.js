@@ -30,7 +30,8 @@ function show_dirs(path, req, res) {
 
 var server = http.createServer(function(req, res) {
     console.log('[' + new Date() + ']', req.client.remoteAddress, req.url);
-    var path = current_dir + req.url;
+    var path = current_dir + decodeURIComponent(req.url);
+    console.log(path)
     if(path[path.length - 1] === '/') {
         path = path.substring(0, path.length - 1);
     }
